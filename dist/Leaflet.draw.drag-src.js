@@ -924,9 +924,9 @@ L.Edit.PolyVerticesEdit.include( /** @lends L.Edit.PolyVerticesEdit.prototype */
   _delegateToShape: function(evt) {
     var poly = this._shape || this._poly;
     var marker = evt.target;
+    var containerPos = marker._icon ?  L.DomUtil.getPosition(marker._icon) : new L.Point(0, 0);
     poly.fire('mousedown', L.Util.extend(evt, {
-      containerPoint: L.DomUtil.getPosition(marker._icon)
-        .add(poly._map._getMapPanePos())
+      containerPoint: containerPos.add(poly._map._getMapPanePos())
     }));
   },
 
